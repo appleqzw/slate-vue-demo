@@ -1,0 +1,25 @@
+{
+  "name": "vite-demo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@ant-design/icons-vue": "^7.0.1",
+    "ant-design-vue": "4.2.6",
+    "slate-vue3": "^0.7.13",
+    "vue": "^3.5.17"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.4",
+    "@vitejs/plugin-vue-jsx": "^4.2.0",
+    "less": "^4.2.2",
+    "prettier": "^3.5.3",
+    "vite": "^5.4.19",
+    "vite-plugin-require": "^1.2.14"
+  }
+}
