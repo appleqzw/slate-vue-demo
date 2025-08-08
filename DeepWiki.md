@@ -255,3 +255,46 @@ Wiki pages you might want to explore:
 
 # How to manually select all content, just like ctrl+a
 
+You're asking about how to manually select all content in a Slate editor, which is equivalent to the Ctrl+A keyboard shortcut functionality. <cite/>
+
+## Answer
+
+To select all content in a Slate editor, use `Transforms.select()` with a range that spans from the start to the end of the entire editor:
+
+```javascript
+Transforms.select(editor, {
+  anchor: Editor.start(editor, []),
+  focus: Editor.end(editor, []),
+})
+``` [1](#8-0) 
+
+### How It Works
+
+This approach uses:
+- **`Editor.start(editor, [])`** to get the very first point in the editor [2](#8-1) 
+- **`Editor.end(editor, [])`** to get the very last point in the editor 
+- **`Transforms.select()`** to set the selection to span this entire range [3](#8-2) 
+
+The empty path `[]` represents the entire editor, so `Editor.start(editor, [])` and `Editor.end(editor, [])` give you the absolute beginning and end points of all content.
+
+### Real Usage Examples
+
+The codebase shows this exact pattern in test cases: [4](#8-3) 
+
+### Alternative Approach Using Path Selection
+
+You can also select all content by selecting the entire editor path, which will expand to cover all content: [5](#8-4) 
+
+When you pass a Path to `Transforms.select()`, it automatically expands to select the entire node at that path. [6](#8-5) 
+
+## Notes
+
+Both approaches achieve the same result - selecting all editor content. The range-based approach is more explicit about selecting from start to end, while the path-based approach relies on Slate's automatic expansion behavior. The range approach is typically preferred as it's clearer in intent and matches the documentation examples.
+
+Wiki pages you might want to explore:
+- [Transforms and Operations (ianstormtaylor/slate)](/wiki/ianstormtaylor/slate#2.4)
+
+Wiki pages you might want to explore:
+- [Editable Component (ianstormtaylor/slate)](/wiki/ianstormtaylor/slate#2.2)
+- [Transforms and Operations (ianstormtaylor/slate)](/wiki/ianstormtaylor/slate#2.4)
+- [Custom Components and Rendering (ianstormtaylor/slate)](/wiki/ianstormtaylor/slate#3.3)
