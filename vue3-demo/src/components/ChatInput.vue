@@ -141,10 +141,11 @@ const handleKeyDown = (e) => {
       handleSend()
     }
   }
-  if ((e.ctrlKey || e.metaKey) && e.key === 'a') {
-    e.preventDefault()
-    editorRef?.value?.selectAll()
-  }
+  // slate-vue3@0.7.14 已修复此问题，不用手动监听全选了
+  // if ((e.ctrlKey || e.metaKey) && e.key === 'a') {
+  //   e.preventDefault()
+  //   editorRef?.value?.selectAll()
+  // }
 }
 const handleSend = () => {
   const content = editorRef?.value?.getContent()

@@ -15,8 +15,8 @@ importers:
         specifier: 4.2.6
         version: 4.2.6(vue@3.5.18)
       slate-vue3:
-        specifier: ^0.7.13
-        version: 0.7.13(vue@3.5.18)
+        specifier: ^0.7.14
+        version: 0.7.14(vue@3.5.18)
       vue:
         specifier: ^3.5.17
         version: 3.5.18
@@ -954,8 +954,8 @@ packages:
   shallow-equal@1.2.1:
     resolution: {integrity: sha512-S4vJDjHHMBaiZuT9NPb616CSmLf618jawtv3sufLl6ivK8WocjAo58cXwbRV1cgqxH0Qbv+iUt6m05eqEa2IRA==}
 
-  slate-vue3@0.7.13:
-    resolution: {integrity: sha512-l7IQHGhE+4FfJ8tujcNL6DLlW6dB1Wf8EqtT4nFDokfUwczW/QnJPj4aOQKFt8alYPBTokj5PrY8qAzHxL2clQ==}
+  slate-vue3@0.7.14:
+    resolution: {integrity: sha512-/1V9oAZ/WG9O4I0bhItjfwz4pltmxH0jRWDfgeBOqXCqpAc/9vJbCz+jlJB9hN3wY9xi/GV8a+lhbvWhTe7pyg==}
     peerDependencies:
       vue: ^3.0.0
 
@@ -2022,7 +2022,7 @@ snapshots:
 
   shallow-equal@1.2.1: {}
 
-  slate-vue3@0.7.13(vue@3.5.18):
+  slate-vue3@0.7.14(vue@3.5.18):
     dependencies:
       direction: 2.0.1
       is-hotkey: 0.2.0
