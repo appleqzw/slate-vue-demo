@@ -21,9 +21,9 @@
   </Slate>
 </template>
 <script setup lang="jsx">
-import { useSlots, watch, h, toRaw } from 'vue'
+import { useSlots, nextTick, h, toRaw } from 'vue'
 import { Slate, Editable, useInheritRef } from 'slate-vue3'
-import { createEditor, Transforms, Range } from 'slate-vue3/core'
+import { createEditor, Transforms, Range, Editor, Node } from 'slate-vue3/core'
 import { DOMEditor, withDOM } from 'slate-vue3/dom'
 import { withHistory } from 'slate-vue3/history'
 
@@ -59,17 +59,36 @@ const props = defineProps({
 
 const editor = withHistory(withDOM(createEditor()))
 editor.children = props.value
-watch(
-  () => props.value,
-  (newVal) => {
-    editor.children = newVal
-  },
-  { deep: true }
-)
 
 defineExpose({
   focus: () => {
     DOMEditor.focus(editor)
+  },
+  focusEnd: () => {
+    Transforms.select(editor, Editor.end(editor, []))
+    nextTick(() => {
+      DOMEditor.focus(editor)
+    })
+  },
+  clear: () => {
+    Transforms.delete(editor, {
+      at: {
+        anchor: Editor.start(editor, []),
+        focus: Editor.end(editor, []),
+      },
+    })
+  },
+  selectAll: () => {
+    Transforms.select(editor, {
+      anchor: Editor.start(editor, []),
+      focus: Editor.end(editor, []),
+    })
+  },
+  getContent: () => {
+    return editor.children.map((item) => Node.string(item)).join('\n')
+  },
+  setContent: (text) => {
+    Transforms.insertText(editor, text, { at: [] })
   },
 })
 

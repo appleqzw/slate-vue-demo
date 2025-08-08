@@ -77,7 +77,7 @@ import ExitSkillButton from './ExitSkillButton.vue'
 import ChatEditor from './ChatEditor.vue'
 import { Button, Dropdown, Menu, MenuItem } from 'ant-design-vue'
 import ArrowUp from './ArrowUp.vue'
-const emit = defineEmits('update:skill', 'send')
+const emit = defineEmits(['update:skill', 'send'])
 const props = defineProps({
   skill: {
     type: String,
@@ -141,8 +141,17 @@ const handleKeyDown = (e) => {
       handleSend()
     }
   }
+  if (e.ctrlKey && e.key === 'a') {
+    event.preventDefault()
+    editorRef?.value?.selectAll()
+  }
 }
 const handleSend = () => {
-  emit('send')
+  const content = editorRef?.value?.getContent()
+  console.log('Node.string', content)
+  if (content) {
+    emit('send', content)
+    editorRef?.value?.clear()
+  }
 }
 </script>
