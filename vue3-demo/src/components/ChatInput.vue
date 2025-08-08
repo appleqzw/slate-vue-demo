@@ -141,8 +141,8 @@ const handleKeyDown = (e) => {
       handleSend()
     }
   }
-  if (e.ctrlKey && e.key === 'a') {
-    event.preventDefault()
+  if ((e.ctrlKey || e.metaKey) && e.key === 'a') {
+    e.preventDefault()
     editorRef?.value?.selectAll()
   }
 }

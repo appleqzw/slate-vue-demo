@@ -8,6 +8,8 @@
 4. 选择另一个技能
 5. 控制台报错
 
+已解决，不直接修改`editor.children`，而是通过`Transforms`来实现
+
 ```
 chunk-5BRTLDC4.js?v=049b8083:2373 Uncaught Error: Cannot resolve a DOM point from Slate point: {"path":[0,0],"offset":3}
     at Object.toDOMPoint (chunk-L4AXOCRG.js?v=049b8083:463:13)
@@ -39,3 +41,5 @@ invoker @ chunk-5BRTLDC4.js?v=049b8083:11303
 ## 问题2
 
 选技能后，输入任意内容，鼠标框选字符，然后按回退键删除，可以删掉框选的字符，但是如果是command+a全选，只能删1个字符
+
+已解决，手动监听ctrl+a、command+a，然后通过Transforms来选中全部即可
